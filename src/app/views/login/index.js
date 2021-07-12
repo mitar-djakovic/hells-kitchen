@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { css } from '@emotion/react';
+import LoginForm from './LoginForm';
 import {
   view, login, formContainer, infoContainer,
 } from './style';
@@ -21,6 +22,7 @@ const LoginView = () => (
           <h2>Welcome back to</h2>
           <h1>Hell&apos;s Kitchen</h1>
         </div>
+        <LoginForm />
       </div>
     </div>
     <div
