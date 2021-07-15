@@ -1,22 +1,10 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { css } from '@emotion/react';
 import LoginForm from './LoginForm';
-import {
-  view, login, formContainer, infoContainer,
-} from './style';
 
 const LoginView = () => (
-  <div
-    css={css`
-      ${view} ${login}
-    `}
-  >
-    <div
-      css={css`
-        ${formContainer}
-      `}
-    >
+  <div className="view login">
+    <div className="form-container">
       <div>
         <div className="welcome-info">
           <h2>Welcome back to</h2>
@@ -25,11 +13,7 @@ const LoginView = () => (
         <LoginForm />
       </div>
     </div>
-    <div
-      css={css`
-        ${infoContainer}
-      `}
-    >
+    <div className="info-container">
       <div>
         <h1>Hell&apos;s Kitchen</h1>
         <h2>
