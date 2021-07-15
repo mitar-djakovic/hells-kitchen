@@ -2,7 +2,7 @@ import React from 'react';
 import { Formik, Form } from 'formik';
 import { Button, Input } from '../../components/atoms';
 import { validationSchema } from './validationSchema';
-import './login.scss';
+import './styles.scss';
 
 const LoginForm = () => {
   const lol = '';
