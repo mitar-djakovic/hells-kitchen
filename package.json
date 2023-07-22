@@ -50,8 +50,8 @@
 	},
 	"husky": {
 		"hooks": {
-			"pre-commit": "yarn format && yarn lint && yarn coverage",
-			"pre-push": "npm test"
+			"pre-commit": "yarn format && yarn lint",
+			"pre-push": "yarn test"
 		}
 	}
 }
