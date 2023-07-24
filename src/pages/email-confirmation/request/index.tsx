@@ -1,3 +1,3 @@
 export default function RequestEmailConfirmation() {
-	return <div>EmailConfirmationRequest</div>;
+	return <div>RequestEmailConfirmation</div>;
 }
