@@ -10,7 +10,8 @@
 		"test": "vitest",
 		"test:ui": "vitest --ui",
 		"coverage": "vitest run --coverage",
-		"cypress": "cypress open",
+		"e2e": "cypress open",
+		"e2e:headles": "cypress run",
 		"postinstall": "husky install"
 	},
 	"dependencies": {
