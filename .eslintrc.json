@@ -18,7 +18,14 @@
 			}
 		}
 	},
-	"plugins": ["@typescript-eslint", "react", "prettier", "react-hooks", "simple-import-sort"],
+	"plugins": [
+		"@typescript-eslint",
+		"react",
+		"prettier",
+		"react-hooks",
+		"simple-import-sort",
+		"cypress"
+	],
 	"extends": [
 		"eslint:recommended",
 		"plugin:@typescript-eslint/recommended",
@@ -30,7 +37,8 @@
 		"plugin:jsx-a11y/recommended",
 		"plugin:sonarjs/recommended",
 		"plugin:security/recommended",
-		"plugin:react-hooks/recommended"
+		"plugin:react-hooks/recommended",
+		"plugin:cypress/recommended"
 	],
 	"rules": {
 		"eqeqeq": "error",
