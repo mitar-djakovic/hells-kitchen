@@ -19,7 +19,11 @@ jobs:
         cache: 'yarn'
     - name: 'Install packages'
       run: yarn install --frozen-lockfile
+    - name: 'Start app'
+      run: yarn dev
     - name: 'Unit tests'
       run: yarn test
     - name: 'Unit tests coverage'
       run: yarn coverage
+    - name: 'e2e tests'
+      run: 'yarn e2e:headless'
