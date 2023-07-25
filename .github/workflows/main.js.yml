@@ -6,6 +6,7 @@ on:
 
 jobs:
   build:
+    name: 'build'
     runs-on: ubuntu-latest
     strategy:
       matrix:
@@ -19,9 +20,23 @@ jobs:
         cache: 'yarn'
     - name: 'Install packages'
       run: yarn install --frozen-lockfile
-    - name: 'Unit tests'
-      run: yarn test
-    - name: 'Unit tests coverage'
-      run: yarn coverage
-    - name: 'e2e tests'
-      run: 'yarn e2e:headless'
+  unit-tests:
+    name: 'unit-tests'
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [ 18.x ]
+    steps:
+      - name: 'Unit tests'
+        run: yarn test
+      - name: 'Unit tests coverage'
+        run: yarn coverage
+  e2e-tests:
+    name: 'e2e-tests'
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [ 18.x ]
+    steps:
+      - name: 'e2e tests'
+        run: yarn e2e:headless
