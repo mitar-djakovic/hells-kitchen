@@ -1,4 +1,4 @@
-name: Tests
+name: build-and-test
 
 on:
   pull_request:
@@ -28,9 +28,17 @@ jobs:
       matrix:
         node-version: [ 18.x ]
     steps:
-      - name: 'Unit tests'
+      - uses: actions/checkout@v3
+      - name: install Node ${{ matrix.node-version }}
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ matrix.node-version }}
+          cache: 'yarn'
+      - name: 'install packages'
+        run: yarn install --frozen-lockfile
+      - name: 'check tests'
         run: yarn test
-      - name: 'Unit tests coverage'
+      - name: 'check tests coverage'
         run: yarn coverage
   e2e-tests:
     name: 'e2e-tests'
@@ -40,5 +48,11 @@ jobs:
       matrix:
         node-version: [ 18.x ]
     steps:
-      - name: 'e2e tests'
+      - uses: actions/checkout@v3
+      - name: install Node ${{ matrix.node-version }}
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ matrix.node-version }}
+          cache: 'yarn'
+      - name: 'check e2e tests'
         run: yarn e2e:headless
