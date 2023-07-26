@@ -1,10 +1,10 @@
 import { render, screen, within } from '@testing-library/react';
 import { expect, test } from 'vitest';
 
-import Login from '../index';
+import Signup from '../index';
 
-test('login', () => {
-	render(<Login />);
-	const main = within(screen.getByText('Login'));
+test('Signup page', () => {
+	render(<Signup />);
+	const main = within(screen.getByText('Signup'));
 	expect(main).toBeDefined();
 });

@@ -1,0 +1,58 @@
+name: build-and-test
+
+on:
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  build:
+    name: 'build'
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [18.x]
+    steps:
+    - uses: actions/checkout@v3
+    - name: Install Node ${{ matrix.node-version }}
+      uses: actions/setup-node@v3
+      with:
+        node-version: ${{ matrix.node-version }}
+        cache: 'yarn'
+    - name: 'Install packages'
+      run: yarn install --frozen-lockfile
+  unit-tests:
+    name: 'unit-tests'
+    needs: ['build']
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [ 18.x ]
+    steps:
+      - uses: actions/checkout@v3
+      - name: install Node ${{ matrix.node-version }}
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ matrix.node-version }}
+          cache: 'yarn'
+      - name: 'install packages'
+        run: yarn install --frozen-lockfile
+      - name: 'check tests'
+        run: yarn test
+      - name: 'check tests coverage'
+        run: yarn coverage
+  e2e-tests:
+    name: 'e2e-tests'
+    needs: ['build']
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [ 18.x ]
+    steps:
+      - uses: actions/checkout@v3
+      - name: install Node ${{ matrix.node-version }}
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ matrix.node-version }}
+          cache: 'yarn'
+#      - name: 'check e2e tests'
+#        run: yarn e2e:headless
