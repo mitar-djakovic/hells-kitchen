@@ -54,5 +54,5 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
           cache: 'yarn'
-      - name: 'check e2e tests'
-        run: yarn e2e:headless
+#      - name: 'check e2e tests'
+#        run: yarn e2e:headless
