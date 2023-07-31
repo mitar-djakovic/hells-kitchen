@@ -3,17 +3,17 @@ import { ThemeProvider } from 'styled-components';
 
 import { theme } from '../../config/index';
 
-import Button from './index';
+import Icon from './index';
 
 const meta = {
-	title: 'Components/Button',
-	component: Button,
+	title: 'Components/Icon',
+	component: Icon,
 	parameters: {
 		layout: 'centered',
 	},
 	tags: ['autodocs'],
 	argTypes: {},
-} satisfies Meta<typeof Button>;
+} satisfies Meta<typeof Icon>;
 
 export default meta;
 type Story = StoryObj<typeof meta>;
@@ -27,13 +27,8 @@ export const Basic: Story = {
 		),
 	],
 	args: {
-		children: 'Hello',
+		name: 'behance',
 		size: 'md',
-		fullWidth: false,
-		round: false,
-		disabled: false,
-		variant: 'contained',
-		status: 'primary',
 		className: '',
 	},
 };

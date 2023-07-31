@@ -2,7 +2,7 @@ import { RegularButton, RoundButton } from './Button.styled';
 
 type Variant = 'contained' | 'outlined' | 'content';
 type Status = 'primary' | 'warning' | 'error' | 'success' | 'neutral';
-type Size = 'xl' | 'lg' | 'md' | 'sm' | 'xs';
+type Size = 'xs' | 'sm' | 'md' | 'lg' | 'xl';
 
 interface ButtonProps {
 	onClick: () => void;
