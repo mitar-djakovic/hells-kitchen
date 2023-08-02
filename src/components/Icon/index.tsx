@@ -1,3 +1,5 @@
+import { Name } from '../../types';
+
 import { IconStyled } from './Icon.styled';
 import {
 	Behance,
@@ -21,28 +23,7 @@ import {
 	Youtube,
 } from './icons';
 
-type Name =
-	| 'behance'
-	| 'dribble'
-	| 'facebook'
-	| 'google'
-	| 'instagram'
-	| 'linkedin'
-	| 'medium'
-	| 'patreon'
-	| 'pinterest'
-	| 'reddit'
-	| 'rss'
-	| 'skype'
-	| 'slack'
-	| 'snapchat'
-	| 'spotify'
-	| 'telegram'
-	| 'tiktok'
-	| 'twitch'
-	| 'youtube';
-
-type Size = 'md' | 'lg';
+type Size = 'xs' | 'sm' | 'md' | 'lg' | 'xl';
 
 const iconMap = {
 	behance: <Behance />,
@@ -73,7 +54,7 @@ interface IconProps {
 	className?: string;
 }
 
-const Icon = ({ name, size = 'md', color = '#000000', className }: IconProps) => (
+const Icon = ({ name, size = 'sm', color = '#000000', className }: IconProps) => (
 	<IconStyled size={size} className={className} color={color}>
 		{iconMap[name]}
 	</IconStyled>

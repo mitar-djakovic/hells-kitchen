@@ -5,6 +5,8 @@ import { theme } from '../../config/index';
 
 import Button from './index';
 
+import '../../styles/global.css';
+
 const meta = {
 	title: 'Components/Button',
 	component: Button,

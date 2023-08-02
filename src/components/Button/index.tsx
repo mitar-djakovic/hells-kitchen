@@ -1,4 +1,7 @@
-import { RegularButton, RoundButton } from './Button.styled';
+import { Name } from '../../types';
+import Icon from '../Icon';
+
+import { RegularButton, RoundButton, Text } from './Button.styled';
 
 type Variant = 'contained' | 'outlined' | 'content';
 type Status = 'primary' | 'warning' | 'error' | 'success' | 'neutral';
@@ -14,6 +17,8 @@ interface ButtonProps {
 	status?: Status;
 	size?: Size;
 	className?: string;
+	startIcon?: Name;
+	endIcon?: Name;
 }
 
 const Button = ({
@@ -26,6 +31,8 @@ const Button = ({
 	status = 'primary',
 	size = 'md',
 	className,
+	startIcon,
+	endIcon,
 }: ButtonProps) =>
 	round ? (
 		<RoundButton
@@ -36,7 +43,7 @@ const Button = ({
 			status={status}
 			className={className}
 		>
-			<div>1</div>
+			{startIcon && <Icon name={startIcon} size={size} />}
 		</RoundButton>
 	) : (
 		<RegularButton
@@ -48,7 +55,9 @@ const Button = ({
 			status={status}
 			className={className}
 		>
-			{children}
+			{startIcon && <Icon name={startIcon} size={size} />}
+			<Text size={size}>{children}</Text>
+			{endIcon && <Icon name={endIcon} size={size} />}
 		</RegularButton>
 	);
 

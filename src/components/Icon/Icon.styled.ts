@@ -3,8 +3,11 @@ import styled from 'styled-components';
 import { Size } from './index';
 
 const sizeMap = {
-	md: '2rem',
-	lg: '2.4rem',
+	xs: '1.2rem',
+	sm: '1.4rem',
+	md: '1.6rem',
+	lg: '1.8rem',
+	xl: '2rem',
 };
 
 const IconStyled = styled.div<{ size: Size; color: string }>`

@@ -18,63 +18,64 @@ const regularPadding = {
 	xs: '0.8rem 1.4rem',
 };
 
-const RoundButton = styled.button<{
-	size: Size;
-	variant: Variant;
-	status: Status;
-}>`
+const Button = styled.button<{ status: Status; variant: Variant; size: Size }>`
 	font-weight: 400;
 	box-sizing: border-box;
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	border-radius: 50%;
 	cursor: pointer;
-	padding: ${({ size }) => roundPadding[size]};
-	font-size: ${({ theme, size }) => theme.typography.text[size].fontSize};
-	line-height: ${({ theme, size }) => theme.typography.text[size].lineHeight};
-	background-color: ${({ theme, variant, status }) => {
-		if (variant === 'contained') {
-			return theme.colors.primaryColors[status][500];
-		}
-		if (variant === 'outlined') {
-			return theme.colors.primaryColors.base.white;
-		}
-		return 'transparent';
-	}};
-	color: ${({ theme, variant, status }) => {
-		if (variant === 'contained') {
-			return theme.colors.primaryColors.base.white;
-		}
-		return theme.colors.primaryColors[status][500];
-	}};
+	background-color: ${({ theme, variant, status }) =>
+		variant === 'contained'
+			? theme.colors.primaryColors[status][500]
+			: theme.colors.primaryColors.base.white};
+	color: ${({ theme, variant, status }) =>
+		variant === 'contained'
+			? theme.colors.primaryColors.base.white
+			: theme.colors.primaryColors[status][500]};
 	border: 0.1rem solid
 		${({ theme, status, variant }) =>
-			variant === 'content' ? 'transparent' : theme.colors.primaryColors[status][500]};
+			variant === 'content'
+				? theme.colors.primaryColors.base.white
+				: theme.colors.primaryColors[status][500]};
+
+	div {
+		svg {
+			path {
+				stroke: ${({ theme, variant, status }) =>
+					variant === 'contained'
+						? theme.colors.primaryColors.base.white
+						: theme.colors.primaryColors[status][500]};
+			}
+		}
+	}
 
 	&:disabled {
-		background-color: ${({ theme, variant, status }) => {
-			if (variant === 'contained') {
-				return theme.colors.primaryColors[status][200];
-			}
-			if (variant === 'outlined') {
-				return theme.colors.primaryColors.base.white;
-			}
-			return 'transparent';
-		}};
+		background-color: ${({ theme, variant, status }) =>
+			variant === 'contained'
+				? theme.colors.primaryColors[status][200]
+				: theme.colors.primaryColors.base.white};
+
 		border: 0.1rem solid
 			${({ theme, status, variant }) =>
-				variant === 'content' ? 'transparent' : theme.colors.primaryColors[status][200]};
-		color: ${({ theme, variant, status }) => {
-			if (variant === 'contained') {
-				return theme.colors.primaryColors.base.white;
+				variant === 'content'
+					? theme.colors.primaryColors.base.white
+					: theme.colors.primaryColors[status][200]};
+
+		div {
+			svg {
+				path {
+					stroke: ${({ theme, variant, status }) =>
+						variant === 'contained'
+							? theme.colors.primaryColors.base.white
+							: theme.colors.primaryColors[status][200]};
+				}
 			}
-			return theme.colors.primaryColors[status][200];
-		}};
+		}
 	}
 
 	&:hover {
-		background-color: ${({ theme, variant, disabled, status }) => {
+		background-color: ${({ theme, variant, status, disabled }) => {
 			if (!disabled) {
 				if (variant === 'outlined') {
 					return theme.colors.primaryColors[status][500];
@@ -85,127 +86,60 @@ const RoundButton = styled.button<{
 				return theme.colors.primaryColors[status][200];
 			}
 		}};
-		border: 0.1rem solid
-			${({ theme, status, disabled, variant }) => {
-				if (!disabled) {
-					if (variant === 'content') {
-						return theme.colors.primaryColors[status][200];
-					}
-					return theme.colors.primaryColors[status][400];
-				}
-			}};
-		color: ${({ theme, variant, disabled, status }) => {
-			if (!disabled) {
-				if (variant === 'outlined') {
-					return theme.colors.primaryColors.base.white;
-				}
-				if (variant === 'contained') {
-					return theme.colors.primaryColors.base.white;
-				}
-				return theme.colors.primaryColors[status][500];
+
+		color: ${({ theme, variant }) => {
+			if (variant === 'outlined') {
+				return theme.colors.primaryColors.base.white;
 			}
 		}};
-	}
 
-	div:first-child {
-		width: ${({ size }) => (size === 'xl' ? '2.4rem' : '2rem')};
-		height: ${({ size }) => (size === 'xl' ? '2.4rem' : '2rem')};
-		display: flex;
-		align-items: center;
-		justify-content: center;
+		div {
+			svg {
+				path {
+					stroke: ${({ theme, variant, status, disabled }) => {
+						if (!disabled) {
+							return variant === 'content'
+								? theme.colors.primaryColors[status][500]
+								: theme.colors.primaryColors.base.white;
+						}
+					}};
+				}
+			}
+		}
 	}
 `;
 
-const RegularButton = styled.button<{
+const RoundButton = styled(Button)<{
+	size: Size;
+	variant: Variant;
+	status: Status;
+}>`
+	border-radius: 50%;
+	padding: ${({ size }) => roundPadding[size]};
+`;
+
+const RegularButton = styled(Button)<{
 	fullWidth: boolean;
 	size: Size;
 	status: Status;
 	variant: Variant;
 }>`
-	font-weight: 400;
-	box-sizing: border-box;
-	display: flex;
-	align-items: center;
-	justify-content: center;
 	border-radius: 0.4rem;
-	cursor: pointer;
 	width: ${({ fullWidth }) => fullWidth && '100%'};
 	padding: ${({ size }) => regularPadding[size]};
-	font-size: ${({ theme, size }) => theme.typography.text[size].fontSize};
-	line-height: ${({ theme, size }) => theme.typography.text[size].lineHeight};
-	background-color: ${({ theme, variant, status }) => {
-		if (variant === 'contained') {
-			return theme.colors.primaryColors[status][500];
-		}
-		if (variant === 'outlined') {
-			return theme.colors.primaryColors.base.white;
-		}
-		return 'transparent';
-	}};
-	color: ${({ theme, variant, status }) => {
-		if (variant === 'contained') {
-			return theme.colors.primaryColors.base.white;
-		}
-		return theme.colors.primaryColors[status][500];
-	}};
-	border: 0.1rem solid
-		${({ theme, status, variant }) =>
-			variant === 'content' ? 'transparent' : theme.colors.primaryColors[status][500]};
 
 	&:disabled {
-		background-color: ${({ theme, variant, status }) => {
-			if (variant === 'contained') {
-				return theme.colors.primaryColors[status][200];
-			}
-			if (variant === 'outlined') {
-				return theme.colors.primaryColors.base.white;
-			}
-			return 'transparent';
-		}};
-		border: 0.1rem solid
-			${({ theme, status, variant }) =>
-				variant === 'content' ? 'transparent' : theme.colors.primaryColors[status][200]};
-		color: ${({ theme, variant, status }) => {
-			if (variant === 'contained') {
-				return theme.colors.primaryColors.base.white;
-			}
-			return theme.colors.primaryColors[status][200];
-		}};
-	}
-
-	&:hover {
-		background-color: ${({ theme, variant, disabled, status }) => {
-			if (!disabled) {
-				if (variant === 'outlined') {
-					return theme.colors.primaryColors[status][500];
-				}
-				if (variant === 'contained') {
-					return theme.colors.primaryColors[status][400];
-				}
-				return theme.colors.primaryColors[status][200];
-			}
-		}};
-		border: 0.1rem solid
-			${({ theme, status, disabled, variant }) => {
-				if (!disabled) {
-					if (variant === 'content') {
-						return theme.colors.primaryColors[status][200];
-					}
-					return theme.colors.primaryColors[status][400];
-				}
-			}};
-		color: ${({ theme, variant, disabled, status }) => {
-			if (!disabled) {
-				if (variant === 'outlined') {
-					return theme.colors.primaryColors.base.white;
-				}
-				if (variant === 'contained') {
-					return theme.colors.primaryColors.base.white;
-				}
-				return theme.colors.primaryColors[status][500];
-			}
-		}};
+		color: ${({ theme, variant, status }) =>
+			variant === 'contained'
+				? theme.colors.primaryColors.base.white
+				: theme.colors.primaryColors[status][200]};
 	}
 `;
 
-export { RegularButton, RoundButton };
+const Text = styled.div<{ size: Size }>`
+	margin: ${({ size }) => (size === 'xl' ? '0 1.2rem' : '0 0.8rem')};
+	font-size: ${({ theme, size }) => theme.typography.text[size].fontSize};
+	line-height: ${({ theme, size }) => theme.typography.text[size].lineHeight};
+`;
+
+export { RegularButton, RoundButton, Text };

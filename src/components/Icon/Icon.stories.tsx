@@ -5,6 +5,8 @@ import { theme } from '../../config/index';
 
 import Icon from './index';
 
+import '../../styles/global.css';
+
 const meta = {
 	title: 'Components/Icon',
 	component: Icon,
