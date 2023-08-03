@@ -17,6 +17,7 @@ type Name =
 	| 'telegram'
 	| 'tiktok'
 	| 'twitch'
-	| 'youtube';
+	| 'youtube'
+	| 'none';
 
 export type { Name };

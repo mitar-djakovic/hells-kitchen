@@ -33,8 +33,9 @@ const Button = ({
 	className,
 	startIcon,
 	endIcon,
-}: ButtonProps) =>
-	round ? (
+}: ButtonProps) => {
+	console.log('startIcon', startIcon !== 'none');
+	return round ? (
 		<RoundButton
 			onClick={onClick}
 			size={size}
@@ -56,10 +57,13 @@ const Button = ({
 			className={className}
 		>
 			{startIcon && <Icon name={startIcon} size={size} />}
-			<Text size={size}>{children}</Text>
+			<Text hasStartIcon={startIcon !== 'none'} hasEndIcon={endIcon !== 'none'} size={size}>
+				{children}
+			</Text>
 			{endIcon && <Icon name={endIcon} size={size} />}
 		</RegularButton>
 	);
+};
 
 export type { Size, Status, Variant };
 export default Button;

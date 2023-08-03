@@ -136,8 +136,23 @@ const RegularButton = styled(Button)<{
 	}
 `;
 
-const Text = styled.div<{ size: Size }>`
-	margin: ${({ size }) => (size === 'xl' ? '0 1.2rem' : '0 0.8rem')};
+const Text = styled.div<{ size: Size; hasStartIcon: boolean; hasEndIcon: boolean }>`
+	margin: ${({ size, hasStartIcon, hasEndIcon }) => {
+		if (size === 'xl') {
+			if (hasStartIcon) {
+				return hasEndIcon ? '0rem 1.2rem' : '0rem 0rem 0rem 1.2rem';
+			}
+			if (hasEndIcon) {
+				return '0rem 1.2rem 0rem 0rem';
+			}
+		}
+		if (hasStartIcon) {
+			return hasEndIcon ? '0rem 0.8rem' : '0rem 0rem 0rem 0.8rem';
+		}
+		if (hasEndIcon) {
+			return '0rem 0.8rem 0rem 0rem';
+		}
+	}};
 	font-size: ${({ theme, size }) => theme.typography.text[size].fontSize};
 	line-height: ${({ theme, size }) => theme.typography.text[size].lineHeight};
 `;
