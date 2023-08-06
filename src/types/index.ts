@@ -1,4 +1,4 @@
-type Name =
+type IconName =
 	| 'behance'
 	| 'dribble'
 	| 'facebook'
@@ -17,7 +17,8 @@ type Name =
 	| 'telegram'
 	| 'tiktok'
 	| 'twitch'
+	| 'x'
 	| 'youtube'
 	| 'none';
 
-export type { Name };
+export type { IconName };

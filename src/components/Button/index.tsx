@@ -1,4 +1,4 @@
-import { Name } from '../../types';
+import { IconName } from '../../types';
 import Icon from '../Icon';
 
 import { RegularButton, RoundButton, Text } from './Button.styled';
@@ -17,8 +17,8 @@ interface ButtonProps {
 	status?: Status;
 	size?: Size;
 	className?: string;
-	startIcon?: Name;
-	endIcon?: Name;
+	startIcon?: IconName;
+	endIcon?: IconName;
 }
 
 const Button = ({

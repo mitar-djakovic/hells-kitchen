@@ -1,6 +1,6 @@
 import { ChangeEvent, RefCallback } from 'react';
 
-import { Name } from '../../types';
+import { IconName } from '../../types';
 import Icon from '../Icon';
 
 import { Icons, InputMessage, InputStyled, InputView, InputWrapper, Label } from './Input.styled';
@@ -17,8 +17,8 @@ interface InputProps {
 	label?: string;
 	className?: string;
 	status?: Status;
-	startIcon?: Name;
-	endIcon?: Name;
+	startIcon?: IconName;
+	endIcon?: IconName;
 	name: string;
 	onChange: (e: ChangeEvent<HTMLInputElement>) => void;
 	onBlur?: (e: ChangeEvent<HTMLInputElement>) => void;

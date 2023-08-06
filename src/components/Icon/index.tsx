@@ -1,4 +1,4 @@
-import { Name } from '../../types';
+import { IconName } from '../../types';
 
 import { IconStyled } from './Icon.styled';
 import {
@@ -20,6 +20,7 @@ import {
 	Telegram,
 	Tiktok,
 	Twitch,
+	X,
 	Youtube,
 } from './icons';
 
@@ -44,12 +45,13 @@ const iconMap = {
 	telegram: <Telegram />,
 	tiktok: <Tiktok />,
 	twitch: <Twitch />,
+	x: <X />,
 	youtube: <Youtube />,
 	none: null,
 };
 
 interface IconProps {
-	name: Name;
+	name: IconName;
 	size?: Size;
 	color?: string;
 	className?: string;

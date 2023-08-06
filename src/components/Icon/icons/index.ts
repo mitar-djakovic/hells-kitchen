@@ -16,6 +16,7 @@ import Spotify from './Spotify';
 import Telegram from './Telegram';
 import Tiktok from './Tiktok';
 import Twitch from './Twitch';
+import X from './X';
 import Youtube from './Youtube';
 
 export {
@@ -37,5 +38,6 @@ export {
 	Telegram,
 	Tiktok,
 	Twitch,
+	X,
 	Youtube,
 };

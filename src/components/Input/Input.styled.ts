@@ -57,7 +57,7 @@ const InputStyled = styled.input<{ label?: string; status: Status; hasStartIcon:
 
 	// no focus on input. value is valid
 	&:not(:placeholder-shown):not(:focus) + .label {
-		transform: scale(0.75) translateY(-2.8rem) translateX(-1.6rem);
+		transform: scale(0.75) translateY(-2.8rem) translateX(-15%);
 		transition: 0.2s ease;
 		color: ${({ theme, status }) => theme.colors.primaryColors[status][500]};
 	}
@@ -65,7 +65,7 @@ const InputStyled = styled.input<{ label?: string; status: Status; hasStartIcon:
 	// Work when focus is on the input, value of input is not important
 	&:focus + .label {
 		transform: scale(0.75) translateY(-2.8rem) translateX(-15%);
-    color: ${({ theme, status }) => theme.colors.primaryColors[status][500]}
+    color: ${({ theme, status }) => theme.colors.primaryColors[status][500]};
 	}
 
 	transition: 0.2s ease;
