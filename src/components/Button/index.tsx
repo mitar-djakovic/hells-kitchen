@@ -33,9 +33,8 @@ const Button = ({
 	className,
 	startIcon,
 	endIcon,
-}: ButtonProps) => {
-	console.log('startIcon', startIcon !== 'none');
-	return round ? (
+}: ButtonProps) =>
+	round ? (
 		<RoundButton
 			onClick={onClick}
 			size={size}
@@ -63,7 +62,6 @@ const Button = ({
 			{endIcon && <Icon name={endIcon} size={size} />}
 		</RegularButton>
 	);
-};
 
 export type { Size, Status, Variant };
 export default Button;
