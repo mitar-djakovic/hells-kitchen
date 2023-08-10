@@ -41,14 +41,13 @@ const InputStyled = styled.input<{ label?: string; status: Status; hasStartIcon:
 	letter-spacing: ${({ theme }) => theme.typography.text.md.letterSpacing};
 	font-weight: 400;
 	border: 0.1rem solid ${({ theme, status }) => theme.colors.primaryColors[status][500]};
-	padding: 0.8rem 1.2rem 0.8rem ${({ hasStartIcon }) => (hasStartIcon ? '3.6' : '1.2')}rem;
+	padding: 0.8rem 1.2rem 0.8rem ${({ hasStartIcon }) => (hasStartIcon ? '4.2' : '1.2')}rem;
  	box-shadow: 0 0.1rem 0.2rem 0 rgba(16, 24, 40, 0.05);
 	color: ${({ theme }) => theme.colors.primaryColors.neutral[500]};
 
 	&::placeholder {
 		color: transparent;
 		font-weight: 400;
-		padding-left: 0.5rem;
 	}
 
 	&:focus::placeholder {

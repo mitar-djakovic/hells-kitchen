@@ -2,6 +2,7 @@ import type { Meta, StoryObj } from '@storybook/react';
 import { ThemeProvider } from 'styled-components';
 
 import { theme } from '../../config/index';
+import Icon from '../Icon';
 
 import Input from './index';
 
@@ -38,5 +39,9 @@ export const Basic: Story = {
 		onBlur: () => console.log('onBlur'),
 		className: '',
 		label: 'Label',
+		startIcon: <Icon name="behance" size="lg" />,
+		endIcon: <Icon name="behance" size="lg" />,
+		message: 'Message',
+		status: 'primary',
 	},
 };

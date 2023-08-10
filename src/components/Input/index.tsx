@@ -1,7 +1,4 @@
-import { ChangeEvent, RefCallback } from 'react';
-
-import { IconName } from '../../types';
-import Icon from '../Icon';
+import { ChangeEvent, ReactNode, RefCallback } from 'react';
 
 import { Icons, InputMessage, InputStyled, InputView, InputWrapper, Label } from './Input.styled';
 
@@ -17,8 +14,8 @@ interface InputProps {
 	label?: string;
 	className?: string;
 	status?: Status;
-	startIcon?: IconName;
-	endIcon?: IconName;
+	startIcon?: ReactNode;
+	endIcon?: ReactNode;
 	name: string;
 	onChange: (e: ChangeEvent<HTMLInputElement>) => void;
 	onBlur?: (e: ChangeEvent<HTMLInputElement>) => void;
@@ -30,7 +27,7 @@ const Input = ({
 	fullWidth = false,
 	type = 'text',
 	placeholder,
-	message,
+	message = '',
 	label,
 	className,
 	status = 'neutral',
@@ -40,32 +37,37 @@ const Input = ({
 	onBlur,
 	onChange,
 	forwardRef,
-}: InputProps) => (
-	<InputView className={className} data-testid="input" fullWidth={fullWidth}>
-		<InputWrapper>
-			<Icons hasStartIcon={startIcon !== 'none'} hasEndIcon={endIcon !== 'none'} status={status}>
-				{startIcon && <Icon name={startIcon} size="lg" />}
-				{endIcon && <Icon name={endIcon} size="lg" />}
-			</Icons>
-			<InputStyled
-				value={value}
-				ref={forwardRef}
-				status={status}
-				placeholder={placeholder}
-				type={type}
-				hasStartIcon={startIcon !== 'none'}
-				name={name}
-				onChange={onChange}
-				onBlur={onBlur}
-			/>
-			{label && (
-				<Label hasStartIcon={startIcon !== 'none'} status={status} className="label">
-					{label}
-				</Label>
-			)}
-		</InputWrapper>
-		{message && <InputMessage status={status}>{message}</InputMessage>}
-	</InputView>
-);
+}: InputProps) => {
+	const hasStartIcon = startIcon !== undefined;
+	const hasEndIcon = endIcon !== undefined;
+
+	return (
+		<InputView className={className} data-testid="input" fullWidth={fullWidth}>
+			<InputWrapper>
+				<Icons hasStartIcon={hasStartIcon} hasEndIcon={hasEndIcon} status={status}>
+					{startIcon}
+					{endIcon}
+				</Icons>
+				<InputStyled
+					value={value}
+					ref={forwardRef}
+					status={status}
+					placeholder={placeholder}
+					type={type}
+					hasStartIcon={hasStartIcon}
+					name={name}
+					onChange={onChange}
+					onBlur={onBlur}
+				/>
+				{label && (
+					<Label hasStartIcon={hasStartIcon} status={status} className="label">
+						{label}
+					</Label>
+				)}
+			</InputWrapper>
+			{message && <InputMessage status={status}>{message}</InputMessage>}
+		</InputView>
+	);
+};
 
 export default Input;
