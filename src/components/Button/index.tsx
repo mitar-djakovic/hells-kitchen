@@ -1,5 +1,4 @@
-import { IconName } from '../../types';
-import Icon from '../Icon';
+import { ReactNode } from 'react';
 
 import { RegularButton, RoundButton, Text } from './Button.styled';
 
@@ -17,8 +16,8 @@ interface ButtonProps {
 	status?: Status;
 	size?: Size;
 	className?: string;
-	startIcon?: IconName;
-	endIcon?: IconName;
+	startIcon?: ReactNode;
+	endIcon?: ReactNode;
 }
 
 const Button = ({
@@ -33,8 +32,11 @@ const Button = ({
 	className,
 	startIcon,
 	endIcon,
-}: ButtonProps) =>
-	round ? (
+}: ButtonProps) => {
+	const hasStartIcon = startIcon !== undefined;
+	const hasEndIcon = endIcon !== undefined;
+
+	return round ? (
 		<RoundButton
 			onClick={onClick}
 			size={size}
@@ -43,7 +45,7 @@ const Button = ({
 			status={status}
 			className={className}
 		>
-			{startIcon && <Icon name={startIcon} size={size} />}
+			{startIcon}
 		</RoundButton>
 	) : (
 		<RegularButton
@@ -55,13 +57,14 @@ const Button = ({
 			status={status}
 			className={className}
 		>
-			{startIcon && <Icon name={startIcon} size={size} />}
-			<Text hasStartIcon={startIcon !== 'none'} hasEndIcon={endIcon !== 'none'} size={size}>
+			{startIcon}
+			<Text hasStartIcon={hasStartIcon} hasEndIcon={hasEndIcon} size={size}>
 				{children}
 			</Text>
-			{endIcon && <Icon name={endIcon} size={size} />}
+			{endIcon}
 		</RegularButton>
 	);
+};
 
 export type { Size, Status, Variant };
 export default Button;

@@ -2,6 +2,7 @@ import type { Meta, StoryObj } from '@storybook/react';
 import { ThemeProvider } from 'styled-components';
 
 import { theme } from '../../config/index';
+import Icon from '../Icon';
 
 import Button from './index';
 
@@ -37,5 +38,7 @@ export const Basic: Story = {
 		variant: 'contained',
 		status: 'primary',
 		className: '',
+		startIcon: <Icon name="behance" size="md" />,
+		endIcon: <Icon name="behance" size="md" />,
 	},
 };
