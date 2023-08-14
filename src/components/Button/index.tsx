@@ -1,30 +1,43 @@
-import { ReactNode } from 'react';
+import { ReactElement } from 'react';
 
-import { RegularButton, RoundButton, Text } from './Button.styled';
+import { RegularButton, RoundButton } from './Button.styled';
 
 type Variant = 'contained' | 'outlined' | 'content';
 type Status = 'primary' | 'warning' | 'error' | 'success' | 'neutral';
 type Size = 'xs' | 'sm' | 'md' | 'lg' | 'xl';
 
-interface ButtonProps {
+interface StandardButtonProps {
 	onClick: () => void;
-	children?: string;
-	fullWidth?: boolean;
-	round?: boolean;
 	disabled?: boolean;
 	variant?: Variant;
 	status?: Status;
 	size?: Size;
 	className?: string;
-	startIcon?: ReactNode;
-	endIcon?: ReactNode;
 }
+
+interface RoundButtonProps extends StandardButtonProps {
+	round: true;
+	startIcon?: never;
+	endIcon?: never;
+	children: ReactElement;
+	fullWidth?: never;
+}
+
+interface RegularButtonProps extends StandardButtonProps {
+	round?: false;
+	startIcon?: ReactElement;
+	endIcon?: ReactElement;
+	children: string;
+	fullWidth?: boolean;
+}
+
+type ButtonProps = RegularButtonProps | RoundButtonProps;
 
 const Button = ({
 	children,
 	onClick,
 	fullWidth = false,
-	round = false,
+	round,
 	disabled = false,
 	variant = 'contained',
 	status = 'primary',
@@ -45,22 +58,22 @@ const Button = ({
 			status={status}
 			className={className}
 		>
-			{startIcon}
+			{children}
 		</RoundButton>
 	) : (
 		<RegularButton
 			onClick={onClick}
-			fullWidth={fullWidth}
+			$fullWidth={fullWidth}
 			size={size}
 			disabled={disabled}
 			variant={variant}
 			status={status}
 			className={className}
+			$hasStartIcon={hasStartIcon}
+			$hasEndIcon={hasEndIcon}
 		>
 			{startIcon}
-			<Text hasStartIcon={hasStartIcon} hasEndIcon={hasEndIcon} size={size}>
-				{children}
-			</Text>
+			{children}
 			{endIcon}
 		</RegularButton>
 	);

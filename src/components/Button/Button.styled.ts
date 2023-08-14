@@ -18,13 +18,21 @@ const regularPadding = {
 	xs: '0.8rem 1.4rem',
 };
 
-const Button = styled.button<{ status: Status; variant: Variant; size: Size }>`
+const Button = styled.button<{
+	status: Status;
+	variant: Variant;
+	size: Size;
+	$hasStartIcon?: boolean;
+	$hasEndIcon?: boolean;
+}>`
 	font-weight: 400;
 	box-sizing: border-box;
 	display: flex;
 	align-items: center;
 	justify-content: center;
 	cursor: pointer;
+	font-size: ${({ theme, size }) => theme.typography.text[size].fontSize};
+	line-height: ${({ theme, size }) => theme.typography.text[size].lineHeight};
 	background-color: ${({ theme, variant, status }) =>
 		variant === 'contained'
 			? theme.colors.primaryColors[status][500]
@@ -40,6 +48,22 @@ const Button = styled.button<{ status: Status; variant: Variant; size: Size }>`
 				: theme.colors.primaryColors[status][500]};
 
 	div {
+		margin: ${({ size, $hasStartIcon, $hasEndIcon }) => {
+			if (size === 'xl') {
+				if ($hasStartIcon) {
+					return $hasEndIcon ? '0rem 1.2rem' : '0rem 0rem 0rem 1.2rem';
+				}
+				if ($hasEndIcon) {
+					return '0rem 1.2rem 0rem 0rem';
+				}
+			}
+			if ($hasStartIcon) {
+				return $hasEndIcon ? '0rem 0.8rem' : '0rem 0rem 0rem 0.8rem';
+			}
+			if ($hasEndIcon) {
+				return '0rem 0.8rem 0rem 0rem';
+			}
+		}};
 		svg {
 			path {
 				stroke: ${({ theme, variant, status }) =>
@@ -119,13 +143,13 @@ const RoundButton = styled(Button)<{
 `;
 
 const RegularButton = styled(Button)<{
-	fullWidth: boolean;
+	$fullWidth: boolean;
 	size: Size;
 	status: Status;
 	variant: Variant;
 }>`
 	border-radius: 0.4rem;
-	width: ${({ fullWidth }) => fullWidth && '100%'};
+	width: ${({ $fullWidth }) => $fullWidth && '100%'};
 	padding: ${({ size }) => regularPadding[size]};
 
 	&:disabled {
@@ -136,25 +160,4 @@ const RegularButton = styled(Button)<{
 	}
 `;
 
-const Text = styled.div<{ size: Size; hasStartIcon: boolean; hasEndIcon: boolean }>`
-	margin: ${({ size, hasStartIcon, hasEndIcon }) => {
-		if (size === 'xl') {
-			if (hasStartIcon) {
-				return hasEndIcon ? '0rem 1.2rem' : '0rem 0rem 0rem 1.2rem';
-			}
-			if (hasEndIcon) {
-				return '0rem 1.2rem 0rem 0rem';
-			}
-		}
-		if (hasStartIcon) {
-			return hasEndIcon ? '0rem 0.8rem' : '0rem 0rem 0rem 0.8rem';
-		}
-		if (hasEndIcon) {
-			return '0rem 0.8rem 0rem 0rem';
-		}
-	}};
-	font-size: ${({ theme, size }) => theme.typography.text[size].fontSize};
-	line-height: ${({ theme, size }) => theme.typography.text[size].lineHeight};
-`;
-
-export { RegularButton, RoundButton, Text };
+export { RegularButton, RoundButton };
