@@ -42,9 +42,9 @@ const Input = ({
 	const hasEndIcon = endIcon !== undefined;
 
 	return (
-		<InputView className={className} data-testid="input" fullWidth={fullWidth}>
+		<InputView className={className} data-testid="input" $fullWidth={fullWidth}>
 			<InputWrapper>
-				<Icons hasStartIcon={hasStartIcon} hasEndIcon={hasEndIcon} status={status}>
+				<Icons $hasStartIcon={hasStartIcon} $hasEndIcon={hasEndIcon} status={status}>
 					{startIcon}
 					{endIcon}
 				</Icons>
@@ -54,13 +54,13 @@ const Input = ({
 					status={status}
 					placeholder={placeholder}
 					type={type}
-					hasStartIcon={hasStartIcon}
+					$hasStartIcon={hasStartIcon}
 					name={name}
 					onChange={onChange}
 					onBlur={onBlur}
 				/>
 				{label && (
-					<Label hasStartIcon={hasStartIcon} status={status} className="label">
+					<Label $hasStartIcon={hasStartIcon} status={status} className="label">
 						{label}
 					</Label>
 				)}

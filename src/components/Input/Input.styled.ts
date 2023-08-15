@@ -2,15 +2,15 @@ import styled from 'styled-components';
 
 type Status = 'primary' | 'warning' | 'error' | 'success' | 'neutral';
 
-const InputView = styled.div<{ fullWidth: boolean }>`
-	width: ${(props) => (props.fullWidth ? '100%' : '32rem')};
+const InputView = styled.div<{ $fullWidth: boolean }>`
+	width: ${({ $fullWidth }) => ($fullWidth ? '100%' : '32rem')};
 `;
 
 const InputWrapper = styled.div`
 	position: relative;
 `;
 
-const Icons = styled.div<{ hasStartIcon: boolean; hasEndIcon: boolean; status: Status }>`
+const Icons = styled.div<{ $hasStartIcon: boolean; $hasEndIcon: boolean; status: Status }>`
 	position: absolute;
 	display: flex;
 	align-items: center;
@@ -19,7 +19,8 @@ const Icons = styled.div<{ hasStartIcon: boolean; hasEndIcon: boolean; status: S
 	height: 100%;
 	box-sizing: border-box;
 	padding: 0.8rem 1.2rem;
-	flex-direction: ${({ hasStartIcon, hasEndIcon }) => hasEndIcon && !hasStartIcon && 'row-reverse'};
+	flex-direction: ${({ $hasStartIcon, $hasEndIcon }) =>
+		$hasEndIcon && !$hasStartIcon && 'row-reverse'};
 	pointer-events: none;
 
   div {
@@ -31,7 +32,7 @@ const Icons = styled.div<{ hasStartIcon: boolean; hasEndIcon: boolean; status: S
   }
 `;
 
-const InputStyled = styled.input<{ label?: string; status: Status; hasStartIcon: boolean }>`
+const InputStyled = styled.input<{ label?: string; status: Status; $hasStartIcon: boolean }>`
 	border-radius: 0.8rem;
 	width: 100%;
 	outline: none;
@@ -41,7 +42,7 @@ const InputStyled = styled.input<{ label?: string; status: Status; hasStartIcon:
 	letter-spacing: ${({ theme }) => theme.typography.text.md.letterSpacing};
 	font-weight: 400;
 	border: 0.1rem solid ${({ theme, status }) => theme.colors.primaryColors[status][500]};
-	padding: 0.8rem 1.2rem 0.8rem ${({ hasStartIcon }) => (hasStartIcon ? '4.2' : '1.2')}rem;
+	padding: 0.8rem 1.2rem 0.8rem ${({ $hasStartIcon }) => ($hasStartIcon ? '4.2' : '1.2')}rem;
  	box-shadow: 0 0.1rem 0.2rem 0 rgba(16, 24, 40, 0.05);
 	color: ${({ theme }) => theme.colors.primaryColors.neutral[500]};
 
@@ -100,11 +101,11 @@ const InputMessage = styled.div<{ status: string }>`
 	color: ${({ theme, status }) => theme.colors.primaryColors[status][700]};
 `;
 
-const Label = styled.span<{ status: string; hasStartIcon: boolean }>`
+const Label = styled.span<{ status: string; $hasStartIcon: boolean }>`
 	pointer-events: none;
 	position: absolute;
 	top: 1rem;
-	left: ${({ hasStartIcon }) => (hasStartIcon ? '3.6rem' : '1.2rem')};
+	left: ${({ $hasStartIcon }) => ($hasStartIcon ? '3.6rem' : '1.2rem')};
 	padding: 0 0.8rem;
 	background-color: #ffffff;
 	border-radius: 0.5rem;
