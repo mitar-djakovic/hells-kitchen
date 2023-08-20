@@ -1,10 +1,16 @@
-import { render, screen, within } from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
+import { ThemeProvider } from 'styled-components';
 import { expect, test } from 'vitest';
 
+import { theme } from '../../../config';
 import Signup from '../index';
 
 test('Signup page', () => {
-	render(<Signup />);
-	const main = within(screen.getByText('Signup'));
+	render(
+		<ThemeProvider theme={theme}>
+			<Signup />
+		</ThemeProvider>
+	);
+	const main = screen.getByTestId('signup-page');
 	expect(main).toBeDefined();
 });

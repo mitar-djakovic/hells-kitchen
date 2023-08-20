@@ -78,7 +78,7 @@ export default function Signup() {
 		console.log('signupValues', values);
 	};
 	return (
-		<SignupView>
+		<SignupView data-testid="signup-page">
 			<InfoContainer>
 				<AppName variant="tsm">Hells Kitchen</AppName>
 				<Info>
