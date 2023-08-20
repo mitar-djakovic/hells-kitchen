@@ -54,8 +54,8 @@ const Button = ({
 			onClick={onClick}
 			size={size}
 			disabled={disabled}
-			variant={variant}
-			status={status}
+			$variant={variant}
+			$status={status}
 			className={className}
 		>
 			{children}
@@ -66,8 +66,8 @@ const Button = ({
 			$fullWidth={fullWidth}
 			size={size}
 			disabled={disabled}
-			variant={variant}
-			status={status}
+			$variant={variant}
+			$status={status}
 			className={className}
 			$hasStartIcon={hasStartIcon}
 			$hasEndIcon={hasEndIcon}

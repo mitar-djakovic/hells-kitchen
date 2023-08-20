@@ -19,8 +19,8 @@ const regularPadding = {
 };
 
 const Button = styled.button<{
-	status: Status;
-	variant: Variant;
+	$status: Status;
+	$variant: Variant;
 	size: Size;
 	$hasStartIcon?: boolean;
 	$hasEndIcon?: boolean;
@@ -33,19 +33,19 @@ const Button = styled.button<{
 	cursor: pointer;
 	font-size: ${({ theme, size }) => theme.typography.text[size].fontSize};
 	line-height: ${({ theme, size }) => theme.typography.text[size].lineHeight};
-	background-color: ${({ theme, variant, status }) =>
-		variant === 'contained'
-			? theme.colors.primaryColors[status][500]
+	background-color: ${({ theme, $variant, $status }) =>
+		$variant === 'contained'
+			? theme.colors.primaryColors[$status][500]
 			: theme.colors.primaryColors.base.white};
-	color: ${({ theme, variant, status }) =>
-		variant === 'contained'
+	color: ${({ theme, $variant, $status }) =>
+		$variant === 'contained'
 			? theme.colors.primaryColors.base.white
-			: theme.colors.primaryColors[status][500]};
+			: theme.colors.primaryColors[$status][500]};
 	border: 0.1rem solid
-		${({ theme, status, variant }) =>
-			variant === 'content'
+		${({ theme, $status, $variant }) =>
+			$variant === 'content'
 				? theme.colors.primaryColors.base.white
-				: theme.colors.primaryColors[status][500]};
+				: theme.colors.primaryColors[$status][500]};
 
 	div {
 		margin: ${({ size, $hasStartIcon, $hasEndIcon }) => {
@@ -66,53 +66,53 @@ const Button = styled.button<{
 		}};
 		svg {
 			path {
-				stroke: ${({ theme, variant, status }) =>
-					variant === 'contained'
+				stroke: ${({ theme, $variant, $status }) =>
+					$variant === 'contained'
 						? theme.colors.primaryColors.base.white
-						: theme.colors.primaryColors[status][500]};
+						: theme.colors.primaryColors[$status][500]};
 			}
 		}
 	}
 
 	&:disabled {
-		background-color: ${({ theme, variant, status }) =>
-			variant === 'contained'
-				? theme.colors.primaryColors[status][200]
+		background-color: ${({ theme, $variant, $status }) =>
+			$variant === 'contained'
+				? theme.colors.primaryColors[$status][200]
 				: theme.colors.primaryColors.base.white};
 
 		border: 0.1rem solid
-			${({ theme, status, variant }) =>
-				variant === 'content'
+			${({ theme, $status, $variant }) =>
+				$variant === 'content'
 					? theme.colors.primaryColors.base.white
-					: theme.colors.primaryColors[status][200]};
+					: theme.colors.primaryColors[$status][200]};
 
 		div {
 			svg {
 				path {
-					stroke: ${({ theme, variant, status }) =>
-						variant === 'contained'
+					stroke: ${({ theme, $variant, $status }) =>
+						$variant === 'contained'
 							? theme.colors.primaryColors.base.white
-							: theme.colors.primaryColors[status][200]};
+							: theme.colors.primaryColors[$status][200]};
 				}
 			}
 		}
 	}
 
 	&:hover {
-		background-color: ${({ theme, variant, status, disabled }) => {
+		background-color: ${({ theme, $variant, $status, disabled }) => {
 			if (!disabled) {
-				if (variant === 'outlined') {
-					return theme.colors.primaryColors[status][500];
+				if ($variant === 'outlined') {
+					return theme.colors.primaryColors[$status][500];
 				}
-				if (variant === 'contained') {
-					return theme.colors.primaryColors[status][400];
+				if ($variant === 'contained') {
+					return theme.colors.primaryColors[$status][400];
 				}
-				return theme.colors.primaryColors[status][200];
+				return theme.colors.primaryColors[$status][200];
 			}
 		}};
 
-		color: ${({ theme, variant }) => {
-			if (variant === 'outlined') {
+		color: ${({ theme, $variant }) => {
+			if ($variant === 'outlined') {
 				return theme.colors.primaryColors.base.white;
 			}
 		}};
@@ -120,10 +120,10 @@ const Button = styled.button<{
 		div {
 			svg {
 				path {
-					stroke: ${({ theme, variant, status, disabled }) => {
+					stroke: ${({ theme, $variant, $status, disabled }) => {
 						if (!disabled) {
-							return variant === 'content'
-								? theme.colors.primaryColors[status][500]
+							return $variant === 'content'
+								? theme.colors.primaryColors[$status][500]
 								: theme.colors.primaryColors.base.white;
 						}
 					}};
@@ -135,8 +135,8 @@ const Button = styled.button<{
 
 const RoundButton = styled(Button)<{
 	size: Size;
-	variant: Variant;
-	status: Status;
+	$variant: Variant;
+	$status: Status;
 }>`
 	border-radius: 50%;
 	padding: ${({ size }) => roundPadding[size]};
@@ -145,18 +145,18 @@ const RoundButton = styled(Button)<{
 const RegularButton = styled(Button)<{
 	$fullWidth: boolean;
 	size: Size;
-	status: Status;
-	variant: Variant;
+	$status: Status;
+	$variant: Variant;
 }>`
 	border-radius: 0.4rem;
 	width: ${({ $fullWidth }) => $fullWidth && '100%'};
 	padding: ${({ size }) => regularPadding[size]};
 
 	&:disabled {
-		color: ${({ theme, variant, status }) =>
-			variant === 'contained'
+		color: ${({ theme, $variant, $status }) =>
+			$variant === 'contained'
 				? theme.colors.primaryColors.base.white
-				: theme.colors.primaryColors[status][200]};
+				: theme.colors.primaryColors[$status][200]};
 	}
 `;
 
