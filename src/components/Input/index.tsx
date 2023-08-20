@@ -6,7 +6,6 @@ type Type = 'text' | 'password' | 'email';
 type Status = 'primary' | 'warning' | 'error' | 'success' | 'neutral';
 
 interface InputProps {
-	value: string;
 	placeholder?: string;
 	fullWidth?: boolean;
 	type?: Type;
@@ -23,7 +22,6 @@ interface InputProps {
 }
 
 const Input = ({
-	value,
 	fullWidth = false,
 	type = 'text',
 	placeholder,
@@ -44,14 +42,13 @@ const Input = ({
 	return (
 		<InputView className={className} data-testid="input" $fullWidth={fullWidth}>
 			<InputWrapper>
-				<Icons $hasStartIcon={hasStartIcon} $hasEndIcon={hasEndIcon} status={status}>
+				<Icons $hasStartIcon={hasStartIcon} $hasEndIcon={hasEndIcon} $status={status}>
 					{startIcon}
 					{endIcon}
 				</Icons>
 				<InputStyled
-					value={value}
 					ref={forwardRef}
-					status={status}
+					$status={status}
 					placeholder={placeholder}
 					type={type}
 					$hasStartIcon={hasStartIcon}
@@ -60,12 +57,12 @@ const Input = ({
 					onBlur={onBlur}
 				/>
 				{label && (
-					<Label $hasStartIcon={hasStartIcon} status={status} className="label">
+					<Label $hasStartIcon={hasStartIcon} $status={status} className="label">
 						{label}
 					</Label>
 				)}
 			</InputWrapper>
-			{message && <InputMessage status={status}>{message}</InputMessage>}
+			{message && <InputMessage $status={status}>{message}</InputMessage>}
 		</InputView>
 	);
 };

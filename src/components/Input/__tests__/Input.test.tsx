@@ -11,7 +11,7 @@ describe('Input', () => {
 
 		render(
 			<ThemeProvider theme={theme}>
-				<Input value="value" name="name" onChange={onChange} />
+				<Input name="name" onChange={onChange} />
 			</ThemeProvider>
 		);
 

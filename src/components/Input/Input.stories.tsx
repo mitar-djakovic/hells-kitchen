@@ -30,7 +30,6 @@ export const Basic: Story = {
 		),
 	],
 	args: {
-		value: 'Hello',
 		fullWidth: false,
 		type: 'text',
 		placeholder: 'Placeholder',

@@ -10,7 +10,7 @@ const InputWrapper = styled.div`
 	position: relative;
 `;
 
-const Icons = styled.div<{ $hasStartIcon: boolean; $hasEndIcon: boolean; status: Status }>`
+const Icons = styled.div<{ $hasStartIcon: boolean; $hasEndIcon: boolean; $status: Status }>`
 	position: absolute;
 	display: flex;
 	align-items: center;
@@ -26,13 +26,13 @@ const Icons = styled.div<{ $hasStartIcon: boolean; $hasEndIcon: boolean; status:
   div {
     svg {
       path {
-        stroke: ${({ theme, status }) => theme.colors.primaryColors[status][500]}};
+        stroke: ${({ theme, $status }) => theme.colors.primaryColors[$status][500]}};
       }
     }
   }
 `;
 
-const InputStyled = styled.input<{ label?: string; status: Status; $hasStartIcon: boolean }>`
+const InputStyled = styled.input<{ label?: string; $status: Status; $hasStartIcon: boolean }>`
 	border-radius: 0.8rem;
 	width: 100%;
 	outline: none;
@@ -41,7 +41,7 @@ const InputStyled = styled.input<{ label?: string; status: Status; $hasStartIcon
 	line-height: ${({ theme }) => theme.typography.text.md.lineHeight};
 	letter-spacing: ${({ theme }) => theme.typography.text.md.letterSpacing};
 	font-weight: 400;
-	border: 0.1rem solid ${({ theme, status }) => theme.colors.primaryColors[status][500]};
+	border: 0.1rem solid ${({ theme, $status }) => theme.colors.primaryColors[$status][500]};
 	padding: 0.8rem 1.2rem 0.8rem ${({ $hasStartIcon }) => ($hasStartIcon ? '4.2' : '1.2')}rem;
  	box-shadow: 0 0.1rem 0.2rem 0 rgba(16, 24, 40, 0.05);
 	color: ${({ theme }) => theme.colors.primaryColors.neutral[500]};
@@ -59,13 +59,13 @@ const InputStyled = styled.input<{ label?: string; status: Status; $hasStartIcon
 	&:not(:placeholder-shown):not(:focus) + .label {
 		transform: scale(0.75) translateY(-2.8rem) translateX(-15%);
 		transition: 0.2s ease;
-		color: ${({ theme, status }) => theme.colors.primaryColors[status][500]};
+		color: ${({ theme, $status }) => theme.colors.primaryColors[$status][500]};
 	}
 
 	// Work when focus is on the input, value of input is not important
 	&:focus + .label {
 		transform: scale(0.75) translateY(-2.8rem) translateX(-15%);
-    color: ${({ theme, status }) => theme.colors.primaryColors[status][500]};
+    color: ${({ theme, $status }) => theme.colors.primaryColors[$status][500]};
 	}
 
 	transition: 0.2s ease;
@@ -73,24 +73,24 @@ const InputStyled = styled.input<{ label?: string; status: Status; $hasStartIcon
 	// Invalid value
 	&:invalid:not(:placeholder-shown) {
 		transition: 0.2s ease;
-		color: ${({ theme, status }) => theme.colors.primaryColors[status][500]};
+		color: ${({ theme, $status }) => theme.colors.primaryColors[$status][500]};
 	}
 
 	//Focus on input and value is invalid
 	//  &:invalid:not(:placeholder-shown) + .placeholder {
 	//    transition: 0.2s ease;
-  //    color: ${({ theme, status }) => theme.colors.primaryColors[status][400]}
+  //    color: ${({ theme, $status }) => theme.colors.primaryColors[$status][400]}
 	//  }
 
 	// No focus and value is invalid
 	&:not(:placeholder-shown):not(:focus).input:invalid + .label {
 		transform: scale(0.75) translateY(-2.8rem) translateX(-15%);
-    color: ${({ theme, status }) => theme.colors.primaryColors[status][500]}
+    color: ${({ theme, $status }) => theme.colors.primaryColors[$status][500]}
 		transition: 0.2s ease;
 	}
 `;
 
-const InputMessage = styled.div<{ status: string }>`
+const InputMessage = styled.div<{ $status: string }>`
 	margin-top: 0.4rem;
 	border-radius: 0.2rem;
 	display: flex;
@@ -98,10 +98,10 @@ const InputMessage = styled.div<{ status: string }>`
 	align-items: center;
 	padding: 0 0.8rem 0.6rem 0.5rem;
 	gap: 0.4rem;
-	color: ${({ theme, status }) => theme.colors.primaryColors[status][700]};
+	color: ${({ theme, $status }) => theme.colors.primaryColors[$status][700]};
 `;
 
-const Label = styled.span<{ status: string; $hasStartIcon: boolean }>`
+const Label = styled.span<{ $status: string; $hasStartIcon: boolean }>`
 	pointer-events: none;
 	position: absolute;
 	top: 1rem;
