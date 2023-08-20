@@ -71,7 +71,7 @@ export default function Login() {
 	};
 
 	return (
-		<LoginView>
+		<LoginView data-testid="login-page">
 			<FormContainer>
 				<div>
 					<Title variant="dsm">Login</Title>
