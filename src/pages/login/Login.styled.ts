@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 import { Typography } from '../../components';
 
-const SignupView = styled.div`
+const LoginView = styled.div`
 	width: 100%;
 	height: 100vh;
 	box-sizing: border-box;
@@ -11,19 +11,15 @@ const SignupView = styled.div`
 `;
 
 const InfoContainer = styled.div`
-	background-color: ${({ theme }) => theme.colors.secondaryColors.blueDark[700]};
+	background-color: ${({ theme }) => theme.colors.secondaryColors.blueDark[800]};
 	width: 40%;
 	border-radius: 3rem;
-	margin-right: 2rem;
+	margin-left: 2rem;
 	box-sizing: border-box;
 	padding: 4rem;
 	display: flex;
 	flex-direction: column;
 	justify-content: space-between;
-`;
-
-const Info = styled.div`
-	margin-top: 16rem;
 `;
 
 const FormContainer = styled.div`
@@ -33,31 +29,16 @@ const FormContainer = styled.div`
 	justify-content: center;
 `;
 
-const Form = styled.form`
-	width: 46rem;
-
-	button {
-		margin-top: 2.4rem;
-	}
-`;
-
 const InputWrapper = styled.div`
 	height: 6.8rem;
 	width: 100%;
 `;
 
-const PersonalData = styled.div`
-	display: flex;
-	align-items: center;
-	justify-content: space-between;
+const Form = styled.form`
+	width: 46rem;
 
-	& > div {
-		&:nth-child(1) {
-			margin-right: 0.5rem;
-		}
-		&:nth-child(2) {
-			margin-left: 0.5rem;
-		}
+	button {
+		margin-top: 2.4rem;
 	}
 `;
 
@@ -71,6 +52,18 @@ const SubTitle = styled(Typography)`
 	color: ${({ theme }) => theme.colors.primaryColors.neutral[600]};
 `;
 
+const AppName = styled(Typography)`
+	color: ${({ theme }) => theme.colors.primaryColors.base.white};
+	text-transform: uppercase;
+	position: absolute;
+	right: 5rem;
+	top: 4rem;
+`;
+
+const Info = styled.div`
+	margin-top: 16rem;
+`;
+
 const InfoTitle = styled(Title)`
 	color: ${({ theme }) => theme.colors.primaryColors.base.white};
 	margin-bottom: 1rem;
@@ -78,21 +71,6 @@ const InfoTitle = styled(Title)`
 
 const InfoDescription = styled(Typography)`
 	color: ${({ theme }) => theme.colors.primaryColors.base.white};
-`;
-
-const AppName = styled(Typography)`
-	color: ${({ theme }) => theme.colors.primaryColors.base.white};
-	text-transform: uppercase;
-	position: absolute;
-`;
-
-const Slider = styled.div`
-	background-color: ${({ theme }) => theme.colors.secondaryColors.blueDark[900]};
-	border-radius: 2rem;
-	height: 28rem;
-	display: flex;
-	align-items: center;
-	justify-content: center;
 `;
 
 export {
@@ -104,9 +82,7 @@ export {
 	InfoDescription,
 	InfoTitle,
 	InputWrapper,
-	PersonalData,
-	SignupView,
-	Slider,
+	LoginView,
 	SubTitle,
 	Title,
 };
