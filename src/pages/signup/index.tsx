@@ -1,10 +1,12 @@
 import { FieldError, useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 
-import { Button, Input } from '../../components';
+import { Button, Input, Typography } from '../../components';
 
 import {
 	AppName,
+	ChangePage,
+	ChangePageLink,
 	Form,
 	FormContainer,
 	Info,
@@ -138,6 +140,10 @@ export default function Signup() {
 							Signup
 						</Button>
 					</Form>
+					<ChangePage>
+						<Typography variant="tsm">Already have an account?</Typography>
+						<ChangePageLink href="/login">Log in</ChangePageLink>
+					</ChangePage>
 				</div>
 			</FormContainer>
 		</SignupView>

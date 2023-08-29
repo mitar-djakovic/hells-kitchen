@@ -1,3 +1,5 @@
+// eslint-disable-next-line import/no-unresolved
+import Link from 'next/link';
 import styled from 'styled-components';
 
 import { Typography } from '../../components';
@@ -73,8 +75,28 @@ const InfoDescription = styled(Typography)`
 	color: ${({ theme }) => theme.colors.primaryColors.base.white};
 `;
 
+const ChangePage = styled.div`
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	margin-top: 3.2rem;
+
+	p {
+		margin-right: 0.4rem;
+	}
+`;
+
+const ChangePageLink = styled(Link)`
+	color: ${({ theme }) => theme.colors.primaryColors.primary[700]};
+	font-size: ${({ theme }) => theme.typography.text.sm.fontSize};
+	line-height: ${({ theme }) => theme.typography.text.sm.lineHeight};
+	font-weight: 600;
+`;
+
 export {
 	AppName,
+	ChangePage,
+	ChangePageLink,
 	Form,
 	FormContainer,
 	Info,
