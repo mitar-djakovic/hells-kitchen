@@ -1,4 +1,5 @@
 type IconName =
+	| 'apple'
 	| 'behance'
 	| 'dribble'
 	| 'facebook'

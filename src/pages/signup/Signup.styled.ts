@@ -15,9 +15,7 @@ const SignupView = styled.div`
 	position: relative;
 `;
 
-const Background = styled(Image)`
-	filter: blur(0rem);
-`;
+const Background = styled(Image)``;
 
 const BackgroundLayer = styled.div`
 	width: 100%;

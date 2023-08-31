@@ -1,3 +1,4 @@
+import Apple from './Apple';
 import Behance from './Behance';
 import Dribble from './Dribble';
 import Facebook from './Facebook';
@@ -20,6 +21,7 @@ import X from './X';
 import Youtube from './Youtube';
 
 export {
+	Apple,
 	Behance,
 	Dribble,
 	Facebook,
