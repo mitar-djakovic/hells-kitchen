@@ -1,22 +1,21 @@
 import { FieldError, useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 
+import backgroundImg from '../../assets/5.jpg';
 import { Button, Input, Typography } from '../../components';
 
 import {
 	AppName,
+	Background,
+	BackgroundLayer,
 	ChangePage,
 	ChangePageLink,
 	Form,
 	FormContainer,
-	Info,
 	InfoContainer,
-	InfoDescription,
-	InfoTitle,
 	InputWrapper,
 	PersonalData,
 	SignupView,
-	Slider,
 	SubTitle,
 	Title,
 } from './Signup.styled';
@@ -81,70 +80,65 @@ export default function Signup() {
 	};
 	return (
 		<SignupView data-testid="signup-page">
-			<InfoContainer>
-				<AppName variant="tsm">Hells Kitchen</AppName>
-				<Info>
-					<InfoTitle variant="dxl">Start your journey with us.</InfoTitle>
-					<InfoDescription variant="txl">
-						Discover world best community of comic lowers
-					</InfoDescription>
-				</Info>
-				<Slider>Slider</Slider>
-			</InfoContainer>
+			<AppName variant="tlg">Hells Kitchen</AppName>
+			<Background src={backgroundImg} alt="Some text" fill />
+			<BackgroundLayer />
 			<FormContainer>
-				<div>
+				<InfoContainer>
 					<Title variant="dsm">Create an account</Title>
-					<SubTitle variant="tmd">Take the next step and sign up to your account</SubTitle>
-					<Form onSubmit={handleSubmit(handleSignup)}>
-						<PersonalData>
-							<InputWrapper>
-								<Input
-									{...getCommonProps('firstName')}
-									label="First name"
-									placeholder="Enter your first name"
-								/>
-							</InputWrapper>
-							<InputWrapper>
-								<Input
-									{...getCommonProps('lastName')}
-									label="Last name"
-									placeholder="Enter your last name"
-								/>
-							</InputWrapper>
-						</PersonalData>
+					<SubTitle variant="tmd">
+						Take the next step and discover world best community of comic lowers
+					</SubTitle>
+				</InfoContainer>
+				<Form onSubmit={handleSubmit(handleSignup)}>
+					<PersonalData>
 						<InputWrapper>
 							<Input
-								{...getCommonProps('email')}
-								label="Email"
-								placeholder="Enter your email"
-								type="email"
+								{...getCommonProps('firstName')}
+								label="First name"
+								placeholder="Enter your first name"
 							/>
 						</InputWrapper>
 						<InputWrapper>
 							<Input
-								{...getCommonProps('password')}
-								label="Password"
-								placeholder="Enter your password"
-								type="password"
+								{...getCommonProps('lastName')}
+								label="Last name"
+								placeholder="Enter your last name"
 							/>
 						</InputWrapper>
-						<InputWrapper>
-							<Input
-								{...getCommonProps('confirmPassword')}
-								label="Confirm password"
-								placeholder="Confirm your password"
-								type="password"
-							/>
-						</InputWrapper>
-						<Button onClick={handleSubmit(handleSignup)} disabled={isSubmitting} fullWidth>
-							Signup
-						</Button>
-					</Form>
+					</PersonalData>
+					<InputWrapper>
+						<Input
+							{...getCommonProps('email')}
+							label="Email"
+							placeholder="Enter your email"
+							type="email"
+						/>
+					</InputWrapper>
+					<InputWrapper>
+						<Input
+							{...getCommonProps('password')}
+							label="Password"
+							placeholder="Enter your password"
+							type="password"
+						/>
+					</InputWrapper>
+					<InputWrapper>
+						<Input
+							{...getCommonProps('confirmPassword')}
+							label="Confirm password"
+							placeholder="Confirm your password"
+							type="password"
+						/>
+					</InputWrapper>
 					<ChangePage>
 						<Typography variant="tsm">Already have an account?</Typography>
 						<ChangePageLink href="/login">Log in</ChangePageLink>
 					</ChangePage>
-				</div>
+					<Button onClick={handleSubmit(handleSignup)} disabled={isSubmitting} fullWidth>
+						Signup
+					</Button>
+				</Form>
 			</FormContainer>
 		</SignupView>
 	);
