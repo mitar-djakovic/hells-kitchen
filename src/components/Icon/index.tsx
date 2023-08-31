@@ -2,6 +2,7 @@ import { IconName } from '../../types';
 
 import { IconStyled } from './Icon.styled';
 import {
+	Apple,
 	Behance,
 	Dribble,
 	Facebook,
@@ -27,6 +28,7 @@ import {
 type Size = 'xs' | 'sm' | 'md' | 'lg' | 'xl';
 
 const iconMap = {
+	apple: <Apple />,
 	behance: <Behance />,
 	dribble: <Dribble />,
 	facebook: <Facebook />,

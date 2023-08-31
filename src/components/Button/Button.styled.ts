@@ -58,10 +58,10 @@ const Button = styled.button<{
 				}
 			}
 			if ($hasStartIcon) {
-				return $hasEndIcon ? '0rem 0.8rem' : '0rem 0rem 0rem 0.8rem';
+				return $hasEndIcon ? '0rem 0.8rem' : '0rem 0.8rem 0rem 0rem';
 			}
 			if ($hasEndIcon) {
-				return '0rem 0.8rem 0rem 0rem';
+				return '0rem 0rem 0rem 0.8rem';
 			}
 		}};
 		svg {

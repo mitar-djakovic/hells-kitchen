@@ -1,20 +1,23 @@
 import { FieldError, useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 
-import { Button, Input, Typography } from '../../components';
+import backgroundImg from '../../assets/3.jpg';
+import { Button, Icon, Input, Typography } from '../../components';
 
 import {
 	AppName,
+	Background,
+	BackgroundLayer,
 	ChangePage,
 	ChangePageLink,
+	Dash,
+	Devider,
 	Form,
 	FormContainer,
-	Info,
 	InfoContainer,
-	InfoDescription,
-	InfoTitle,
 	InputWrapper,
 	LoginView,
+	SocialButtons,
 	SubTitle,
 	Title,
 } from './Login.styled';
@@ -74,46 +77,77 @@ export default function Login() {
 
 	return (
 		<LoginView data-testid="login-page">
+			<AppName variant="tlg">Hells Kitchen</AppName>
+			<Background src={backgroundImg} alt="some background" fill />
+			<BackgroundLayer />
 			<FormContainer>
-				<div>
+				<InfoContainer>
 					<Title variant="dsm">Login</Title>
-					<SubTitle variant="tmd">Relive the moments and create new ones</SubTitle>
-					<Form>
-						<InputWrapper>
-							<Input
-								{...getCommonProps('email')}
-								label="Email"
-								placeholder="Enter your email"
-								type="email"
-							/>
-						</InputWrapper>
-						<InputWrapper>
-							<Input
-								{...getCommonProps('password')}
-								label="Password"
-								placeholder="Enter your password"
-								type="password"
-							/>
-						</InputWrapper>
-						<Button onClick={handleSubmit(handleLogin)} disabled={isSubmitting} fullWidth>
-							Login
+					<SubTitle variant="tmd">
+						Relive the best comic moments and memories or create new ones
+					</SubTitle>
+				</InfoContainer>
+				<Form>
+					<InputWrapper>
+						<Input
+							{...getCommonProps('email')}
+							label="Email"
+							placeholder="Enter your email"
+							type="email"
+						/>
+					</InputWrapper>
+					<InputWrapper>
+						<Input
+							{...getCommonProps('password')}
+							label="Password"
+							placeholder="Enter your password"
+							type="password"
+						/>
+					</InputWrapper>
+					<Button onClick={handleSubmit(handleLogin)} disabled={isSubmitting} fullWidth>
+						Log in
+					</Button>
+					<Devider>
+						<Dash />
+						<Typography variant="tsm">or Log in with</Typography>
+						<Dash />
+					</Devider>
+					<SocialButtons>
+						<Button
+							onClick={() => null}
+							fullWidth
+							variant="outlined"
+							startIcon={<Icon name="google" />}
+						>
+							Google
 						</Button>
-					</Form>
-					<ChangePage>
-						<Typography variant="tsm">Don’t have an account?</Typography>
-						<ChangePageLink href="/signup">Sign up</ChangePageLink>
-					</ChangePage>
-				</div>
+						<Button
+							onClick={() => null}
+							fullWidth
+							variant="outlined"
+							startIcon={<Icon name="apple" />}
+						>
+							Apple
+						</Button>
+						<Button
+							onClick={() => null}
+							fullWidth
+							variant="outlined"
+							startIcon={<Icon name="facebook" />}
+						>
+							Facebook
+						</Button>
+					</SocialButtons>
+				</Form>
+				<ChangePage>
+					<Typography variant="tsm">Don&apos;t have account?</Typography>
+					<ChangePageLink href="/signup">Join now</ChangePageLink>
+				</ChangePage>
+				<ChangePage>
+					<Typography variant="tsm">Having trouble with log in?</Typography>
+					<ChangePageLink href="/signup">Get new password</ChangePageLink>
+				</ChangePage>
 			</FormContainer>
-			<InfoContainer>
-				<AppName variant="tsm">Hells Kitchen</AppName>
-				<Info>
-					<InfoTitle variant="dxl">Continue your journey with us.</InfoTitle>
-					<InfoDescription variant="txl">
-						Step into your realm once more and explore new comics
-					</InfoDescription>
-				</Info>
-			</InfoContainer>
 		</LoginView>
 	);
 }

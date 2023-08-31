@@ -1,4 +1,6 @@
 // eslint-disable-next-line import/no-unresolved
+import Image from 'next/image';
+// eslint-disable-next-line import/no-unresolved
 import Link from 'next/link';
 import styled from 'styled-components';
 
@@ -7,37 +9,38 @@ import { Typography } from '../../components';
 const SignupView = styled.div`
 	width: 100%;
 	height: 100vh;
-	box-sizing: border-box;
-	padding: 2rem;
-	display: flex;
-`;
-
-const InfoContainer = styled.div`
-	background-color: ${({ theme }) => theme.colors.secondaryColors.blueDark[700]};
-	width: 40%;
-	border-radius: 3rem;
-	margin-right: 2rem;
-	box-sizing: border-box;
-	padding: 4rem;
-	display: flex;
-	flex-direction: column;
-	justify-content: space-between;
-`;
-
-const Info = styled.div`
-	margin-top: 16rem;
-`;
-
-const FormContainer = styled.div`
-	width: 60%;
 	display: flex;
 	align-items: center;
 	justify-content: center;
+	position: relative;
+`;
+
+const Background = styled(Image)``;
+
+const BackgroundLayer = styled.div`
+	width: 100%;
+	height: 100vh;
+	background-color: rgba(0, 0, 0, 0.2);
+	position: absolute;
+	z-index: 10;
+`;
+
+const InfoContainer = styled.div`
+	box-sizing: border-box;
+	padding: 0 4rem;
+`;
+
+const FormContainer = styled.div`
+	width: 50rem;
+	box-sizing: border-box;
+	padding: 6rem 3rem;
+	background-color: ${({ theme }) => theme.colors.primaryColors.base.white};
+	z-index: 100;
+	border-radius: 2rem;
+	text-align: center;
 `;
 
 const Form = styled.form`
-	width: 46rem;
-
 	button {
 		margin-top: 2.4rem;
 	}
@@ -65,43 +68,29 @@ const PersonalData = styled.div`
 
 const Title = styled(Typography)`
 	font-weight: 600;
+	margin-bottom: 1rem;
 `;
 
 const SubTitle = styled(Typography)`
 	font-weight: 400;
 	margin-bottom: 4.8rem;
 	color: ${({ theme }) => theme.colors.primaryColors.neutral[600]};
-`;
-
-const InfoTitle = styled(Title)`
-	color: ${({ theme }) => theme.colors.primaryColors.base.white};
-	margin-bottom: 1rem;
-`;
-
-const InfoDescription = styled(Typography)`
-	color: ${({ theme }) => theme.colors.primaryColors.base.white};
+	letter-spacing: 0.1rem;
 `;
 
 const AppName = styled(Typography)`
 	color: ${({ theme }) => theme.colors.primaryColors.base.white};
 	text-transform: uppercase;
 	position: absolute;
-`;
-
-const Slider = styled.div`
-	background-color: ${({ theme }) => theme.colors.secondaryColors.blueDark[900]};
-	border-radius: 2rem;
-	height: 28rem;
-	display: flex;
-	align-items: center;
-	justify-content: center;
+	z-index: 100;
+	left: 5rem;
+	top: 4rem;
 `;
 
 const ChangePage = styled.div`
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	margin-top: 3.2rem;
 
 	p {
 		margin-right: 0.4rem;
@@ -117,18 +106,16 @@ const ChangePageLink = styled(Link)`
 
 export {
 	AppName,
+	Background,
+	BackgroundLayer,
 	ChangePage,
 	ChangePageLink,
 	Form,
 	FormContainer,
-	Info,
 	InfoContainer,
-	InfoDescription,
-	InfoTitle,
 	InputWrapper,
 	PersonalData,
 	SignupView,
-	Slider,
 	SubTitle,
 	Title,
 };
