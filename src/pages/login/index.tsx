@@ -104,10 +104,6 @@ export default function Login() {
 							type="password"
 						/>
 					</InputWrapper>
-					<ChangePage>
-						<Typography variant="tsm">Don’t have an account?</Typography>
-						<ChangePageLink href="/signup">Sign up</ChangePageLink>
-					</ChangePage>
 					<Button onClick={handleSubmit(handleLogin)} disabled={isSubmitting} fullWidth>
 						Log in
 					</Button>
@@ -143,6 +139,14 @@ export default function Login() {
 						</Button>
 					</SocialButtons>
 				</Form>
+				<ChangePage>
+					<Typography variant="tsm">Don&apos;t have account?</Typography>
+					<ChangePageLink href="/signup">Join now</ChangePageLink>
+				</ChangePage>
+				<ChangePage>
+					<Typography variant="tsm">Having trouble with log in?</Typography>
+					<ChangePageLink href="/signup">Get new password</ChangePageLink>
+				</ChangePage>
 			</FormContainer>
 		</LoginView>
 	);

@@ -36,7 +36,7 @@ const FormContainer = styled.div`
 	padding: 6rem 3rem;
 	background-color: ${({ theme }) => theme.colors.primaryColors.base.white};
 	z-index: 100;
-	border-radius: 3rem;
+	border-radius: 2rem;
 	text-align: center;
 `;
 

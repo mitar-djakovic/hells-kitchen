@@ -37,7 +37,7 @@ const InputWrapper = styled.div`
 
 const Form = styled.form`
 	button {
-		margin-top: 2.4rem;
+		margin-top: 1.4;
 	}
 `;
 
@@ -74,6 +74,7 @@ const ChangePage = styled.div`
 	display: flex;
 	align-items: center;
 	justify-content: center;
+	margin-top: 1rem;
 
 	p {
 		margin-right: 0.4rem;
@@ -109,9 +110,15 @@ const Dash = styled.div`
 
 const SocialButtons = styled.div`
 	display: flex;
+	justify-content: space-between;
+	margin-bottom: 2rem;
 
 	button {
 		margin: 0;
+
+		&:nth-child(2) {
+			margin: 0 1rem;
+		}
 	}
 `;
 
