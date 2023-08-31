@@ -76,7 +76,7 @@ export default function Login() {
 	};
 
 	return (
-		<LoginView>
+		<LoginView data-testid="login-page">
 			<AppName variant="tlg">Hells Kitchen</AppName>
 			<Background src={backgroundImg} alt="some background" fill />
 			<BackgroundLayer />
