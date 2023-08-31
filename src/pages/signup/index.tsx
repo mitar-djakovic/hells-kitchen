@@ -1,7 +1,7 @@
 import { FieldError, useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 
-import backgroundImg from '../../assets/5.jpg';
+import signupBg from '../../assets/signupBg.jpg';
 import { Button, Input, Typography } from '../../components';
 
 import {
@@ -81,7 +81,7 @@ export default function Signup() {
 	return (
 		<SignupView data-testid="signup-page">
 			<AppName variant="tlg">Hells Kitchen</AppName>
-			<Background src={backgroundImg} alt="Some text" fill />
+			<Background src={signupBg} alt="Some text" fill />
 			<BackgroundLayer />
 			<FormContainer>
 				<InfoContainer>
